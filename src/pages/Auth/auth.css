@@ -1,0 +1,99 @@
+.form-input{
+    border: 1px solid var(--primaryColor);
+    padding: 30px 10px ;
+    box-shadow: 10px 15px var(--primaryColor);
+    border-radius: 5px;
+
+    max-width: 550px;
+    margin: 40px auto;
+    padding: 20px 20px;
+    text-transform: uppercase;
+}
+.auth-header{
+    text-align: center;
+    padding-bottom: 30px;
+    text-transform: uppercase;
+    font-family: var(--textFamily);
+    font-weight: 700;
+    font-size: 18px;
+}
+.locked-div{
+    text-align: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.locked{
+    background: var(--primaryColor);
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    padding: 12px;
+    text-align: center;
+}
+
+.inputfield{
+    width: 100%;
+    height: 50px;
+    outline: none;
+    border:1px solid #333;
+    background: #fff;
+    padding-left: 8px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+label{
+    font-size: 15px;
+    font-weight: 600;
+}
+.inputfield:focus{
+    border: 1px solid var(--primaryColor);
+}
+.submit-div{
+    text-align: right;
+    align-items: right;
+    width: 100%;
+}
+.submitButton{
+    padding: 10px 20px;
+    background: var(--primaryColor);
+    color:#fff;
+    font-size: 16px;
+    border: none;
+    transition: 0.4s all ease;
+    text-transform: uppercase;
+    font-weight: 600;
+    display: block;
+    border-radius: 5px;
+    right: 0;
+    width: 100%;
+}
+.submitButton:hover{
+    background:rgb(83, 147, 167);
+}
+.passwordshow{
+    display: flex;
+    position: relative;
+}
+.show-icon{
+    position: absolute;
+    right: 7px;
+    font-size: 25px;
+    top: 15px;
+    cursor: pointer;
+    color:rgb(160, 160, 160);
+    transition: 0.4s all ease;
+}
+.show-icon:hover{
+    color:rgb(133, 131, 131);
+}
+.btn-div{
+    text-align: center;
+    align-items: center;
+}
+.button-text{
+    border: none;
+    padding-top: 30px;
+    font-family: var(--textFamily);
+    background: none;
+    text-align: center;
+}
