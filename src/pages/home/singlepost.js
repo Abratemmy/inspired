@@ -5,7 +5,6 @@ import moment from 'moment';
 import {getPost} from "../../actions/posts";
 import "./singlepost.css";
 import CommentSection from './commentSection';
-import WriteComment from './WriteComment';
 
 
 function Singlepost() {

@@ -14,10 +14,10 @@ API.interceptors.request.use((req) => {
 export const fetchPost = ( id) => API.get(`/posts/${id}`);
 export const fetchPosts = () =>API.get('/posts');
 export const likePost = (id) => API.patch(`/posts/${id}/likePost`);
-// export const comment= (value, id) => API.post(`/posts/${id}/commentPost`, {value});
+export const comment= (value, id) => API.post(`/posts/${id}/commentPost`, {value});
 // export const deletePost = (id) =>API.delete(`/posts/${id}`);
 
-export const comment = () => API.post('/comments');
+// export const comment = () => API.post('/comments');
 
 export  const signIn = (values) => API.post('/user/signin', values)
 export  const signUp = (values) => API.post('/user/signup', values)
