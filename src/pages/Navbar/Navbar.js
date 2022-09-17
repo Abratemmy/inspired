@@ -1,5 +1,6 @@
 import React, {useState}from 'react';
 import "./navbar.css";
+import logo from "../../image/inspiredlogo.jpeg"
 
 function Navbar() {
   const [navbar, setNavbar] = useState(false); 
@@ -19,7 +20,9 @@ function Navbar() {
     <nav className={navbar ? "navbar active":"navbar"}>
       <div className='container'>
         <div className='navbar-container'>
-          <div className='logo-text'>InspiredForMen</div>
+          <img src={logo} alt=" " width="10%" />
+          <div className='logo-text'>Welcome to InspiredForMen</div>
+
 
         </div>
       </div>

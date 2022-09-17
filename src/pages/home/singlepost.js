@@ -1,10 +1,11 @@
 import React, { useEffect} from 'react'
-import { useParams} from 'react-router-dom';
+import { NavLink, useParams} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux'
 import moment from 'moment';
 import {getPost} from "../../actions/posts";
 import "./singlepost.css";
 import CommentSection from './commentSection';
+import {BiArrowBack} from "react-icons/bi"
 
 
 function Singlepost() {
@@ -28,10 +29,16 @@ function Singlepost() {
 
   return (
     <div className='singlepost-container'>
+        
         <div className='container'>
            
                 <div className='row'>
-                    <div className='col-lg-7 col-md-7 col-sm-12'>
+                    <div className='col-lg-1 col-md-1 col-sm12'></div>
+                    <div className='col-lg-10 col-md-10 col-sm-12'>
+                        <NavLink to="/" className="back-nav">
+                            <div className='arrow'><BiArrowBack className="back-arrow" /><span>Back to feeds</span></div>
+                        </NavLink>
+                        
                         <div className='singlepost-content'>
                             <div className='singlepost-topic'>{post.topic}</div>
                             <p>Category: <span>{post.category}</span></p>
@@ -56,14 +63,13 @@ function Singlepost() {
                                 <h3><CommentSection post={post} /></h3>
                             </div>
                         </div>
-                    </div>
 
-                    {/* <div className='col-lg-5 col-md-5 col-sm-12'>
-                        <div className='comment-form'>
-                            <WriteComment post={post} />
-                        </div>
-                    </div> */}
-                   
+                        <NavLink to="/" className="back-nav">
+                            <div className='arrow'><BiArrowBack className="back-arrow" /><span> Back to feeds</span></div>
+                        </NavLink>
+                    </div>
+                    <div className='col-lg-1 col-md-1 col-sm12'></div>
+
                 </div>
             
         </div>

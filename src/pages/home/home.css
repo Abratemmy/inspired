@@ -31,6 +31,7 @@
     background: rgb(238, 239, 248);
     z-index: 20!important;
     height: auto;
+    position: relative;
 }
 .display-posts{
     padding: 40px 0px;
@@ -48,17 +49,22 @@
 .post-row:hover {
     background:rgb(235, 247, 255);
     /* color: rgb(79, 172, 201); */
+}.post-row:hover .blogpost-nav{
+    color:#333;
 }
 .post-row .left{
     border-right: 2px solid rgba(173, 206, 250, 0.164);
 }
-
+.blogpost-nav{
+    text-decoration: none;
+    color:#333;
+}
 .post-container{
     width: 100%;
    
 }
 .post-container .topic{
-    font-size: 17px;
+    font-size: 15px;
     font-weight:500;
     text-transform: capitalize;
     padding-bottom: 20px;
@@ -70,7 +76,7 @@
     position: relative;
     left: -5px;
 }
-.arrow{
+.homearrow{
     color:rgba(175, 174, 174, 0.788);
     font-size: 22px;
 }
@@ -79,7 +85,7 @@
     left: -15px;
 }
 .post-row:hover .post-nav{
-    color:#333;
+    color:#333!important;
 }
 .post-nav{
     text-decoration: none;
@@ -169,4 +175,17 @@
 .paginationActive a{
     background: var(--primaryColor);
     color:#fff!important;
+}
+@media screen and (max-width: 760px){
+    .post-row{
+        background: #fff;
+        margin: 3px 0px;
+        width: 100%;
+        height: auto;
+        align-items: center;
+       
+    }
+    .post-topic{
+        line-height: 30px;
+    }
 }

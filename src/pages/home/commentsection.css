@@ -9,6 +9,7 @@
     border: 1px solid rgba(202, 200, 200, 0.705);
     margin: 5px 0px ;
     font-size: 17px;
+    padding: 5px 10px;
 }
 
 .comment-input{
@@ -19,4 +20,39 @@
     margin: 5px 0px ;
     height: 40px;
     font-size: 17px;
+    padding: 5px 10px;
+}
+.comment-input:focus, .comment-textarea:focus{
+    border: 1px solid var(--primaryColor)
+}
+.comment-btn{
+    background: var(--primaryColor);
+    border: none;
+    color:#fff;
+    font-size: 15px;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+.comment-btn:hover{
+    background: rgb(27, 147, 177);
+}
+.display-comments{
+    margin: 10px;
+    background: var(--backgroundColor);
+    border-radius: 5px;
+    padding: 10px 7px;
+}
+.display-comments h6{
+    text-align: center;
+    font-size: 16px;
+}
+.display-comments .name{
+    font-size: 15px;
+    font-weight: 600;
+    padding-bottom: 10px;
+    text-transform: capitalize;
+}
+.display-comments .comment{
+    font-size: 15px;
 }

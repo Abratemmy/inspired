@@ -45,3 +45,22 @@
 .createdby .date{
     color:rgb(170, 168, 168);
 }
+.back-nav{
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+.arrow{
+    margin: 30px 0px;
+    color: var(--primaryColor);
+    font-size: 25px;
+    text-transform: uppercase;
+    transition: 0.4s all ease;
+}
+.arrow:hover{
+    color: #333;
+}
+.arrow span{
+    font-size: 15px;
+    padding-left: 15px;
+    font-weight: 600;
+}
