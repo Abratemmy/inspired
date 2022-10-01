@@ -16,14 +16,7 @@ function Singlepost() {
     const dispatch = useDispatch()
     const navigate = useNavigate();
 
-    // const topic= topic.replace(/\s+/g, '-')
-    // let {topic(.replace(/\s+/g, '-'))} = useParams()
-    // topic = useParams();
     const { topic } = useParams()
-
-    // let topic = {}
-    // topic[replace(/\s+/g, '-')] = useParams();
-    // console.log(topic.replace(/\s+/g, '-'))
 
     useEffect(() => {
         dispatch(getPost(topic))
@@ -31,12 +24,7 @@ function Singlepost() {
 
     
     if(!post) return null
-    
-    // function onLinkClick(e) {
-    //     e.preventDefault();
-    //     navigate('/')
-    //     further processing happens here
-    //  }
+ 
     const showDate = new Date();
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
@@ -51,7 +39,7 @@ function Singlepost() {
             ]}
         /> */}
 
-        <Helmet>
+        {/* <Helmet>
             <meta charSet="UTF-8" />
             <title>{post.topic}</title>
             <meta property="og:title" content={post.topic} />
@@ -60,7 +48,7 @@ function Singlepost() {
             
             <meta id="meta-description" name="description"property='og:description' content={post.topic}/>
            
-        </Helmet>
+        </Helmet> */}
         <Navbar />
         <div className='singlepost-container'>       
             <div className='container'>
@@ -71,15 +59,15 @@ function Singlepost() {
                             <div className='singlepost-content'>
                                 <div className='single-header'>
                                     <h2><NavLink to="/" className="single-nav"> Inspired for men  </NavLink> </h2>
-                                    <FacebookShareButton url={post.topic} quote={post.topic} >
+                                    {/* <FacebookShareButton url={`https://www.inspiredformen.com/${post.topic}`} quote={post.topic} >
                                         <FacebookIcon logoFillColor="white" round={true}></FacebookIcon>
                                     </FacebookShareButton>
 
                                     <WhatsappShareButton title={post.topic}
-                                        url={post.topic}
+                                        url={`https://www.inspiredformen.com/${post.topic}`}
                                     >
                                         <WhatsappIcon logoFillColor="white" round={true}></WhatsappIcon>
-                                    </WhatsappShareButton>
+                                    </WhatsappShareButton> */}
                                     {/* <div className='date'><span>Date:</span> {displaytodaysdate}</div> */}
                                     {/* <div>{toString}</div> */}
                                 </div>

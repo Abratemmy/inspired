@@ -11,7 +11,7 @@ app.use(express.static(path.resolve(__dirname, '..', 'build'),
 ));
 
 // app.get('/*', (request, response) => {
-//     const filePath = path.resolve(__dirname,'build', 'index.html');
+//     const filePath = path.resolve(__dirname, 'build', 'index.html');
 
 //     fs.readFile(filePath, 'utf8', function (err, data) {
 //         if (err){
@@ -19,7 +19,7 @@ app.use(express.static(path.resolve(__dirname, '..', 'build'),
 //             return console.log(err);
 //         }
 
-//         // console.log("success")
+//         console.log("success")
 //         data = data.replace('__META_TITLE__', 'Inspiredformen123.com');
 //         data = data.replace('__META_OG_TITLE__', 'This is inspired og title')
 //         data = data.replace('__META_DESCRIPTION__', 'This is inspired for men websitedescription')
