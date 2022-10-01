@@ -7,7 +7,6 @@ import reducers from './reducers';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.css';
 
-
 import thunk from "redux-thunk";
 import { BrowserRouter as Router} from 'react-router-dom';
 const store = createStore(reducers, compose(applyMiddleware(thunk)))

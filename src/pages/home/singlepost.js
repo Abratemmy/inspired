@@ -1,77 +1,133 @@
 import React, { useEffect} from 'react'
-import { NavLink, useParams} from 'react-router-dom';
+import {Link, useParams, useNavigate, NavLink} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux'
 import moment from 'moment';
 import {getPost} from "../../actions/posts";
 import "./singlepost.css";
 import CommentSection from './commentSection';
-import {BiArrowBack} from "react-icons/bi"
+import Navbar from '../Navbar/Navbar';
+import { Helmet } from 'react-helmet';
+import {FacebookShareButton, WhatsappShareButton, TwitterShareButton} from "react-share"
+import {FacebookIcon, WhatsappIcon, TwitterIcon} from "react-share"
 
 
 function Singlepost() {
-    const {post, posts, loading} =  useSelector((state) => state.postReducer);
+    const {post} =  useSelector((state) => state.postReducer);
     const dispatch = useDispatch()
-    const { id } = useParams();
+    const navigate = useNavigate();
+
+    // const topic= topic.replace(/\s+/g, '-')
+    // let {topic(.replace(/\s+/g, '-'))} = useParams()
+    // topic = useParams();
+    const { topic } = useParams()
+
+    // let topic = {}
+    // topic[replace(/\s+/g, '-')] = useParams();
+    // console.log(topic.replace(/\s+/g, '-'))
 
     useEffect(() => {
-        dispatch(getPost(id))
-    }, [id])
+        dispatch(getPost(topic))
+    }, [topic, navigate])
 
-
-   const Loading = () =>{
-       return(
-           <>
-            <div className="loading"></div>
-           </>
-   )}
-
+    
     if(!post) return null
-
+    
+    // function onLinkClick(e) {
+    //     e.preventDefault();
+    //     navigate('/')
+    //     further processing happens here
+    //  }
+    const showDate = new Date();
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+    var displaytodaysdate= (days[showDate.getDay()]) + ', ' + showDate.getDate() + ' ' + (months[showDate.getMonth()]) + ' ' + showDate.getFullYear();
+    // const toString =showDate.toDateString()
   return (
-    <div className='singlepost-container'>
-        
-        <div className='container'>
-           
-                <div className='row'>
-                    <div className='col-lg-1 col-md-1 col-sm12'></div>
-                    <div className='col-lg-10 col-md-10 col-sm-12'>
-                        <NavLink to="/" className="back-nav">
-                            <div className='arrow'><BiArrowBack className="back-arrow" /><span>Back to feeds</span></div>
-                        </NavLink>
-                        
-                        <div className='singlepost-content'>
-                            <div className='singlepost-topic'>{post.topic}</div>
-                            <p>Category: <span>{post.category}</span></p>
-                            <hr />
+    <div className=''>
+        {/* <Helmet
+            title={post && post.topic ? post.topic : null }
+            meta = {[
+                {"name": "description", "content": post ? post.topic : null}
+            ]}
+        /> */}
 
-                            {post.image !== "" ?<img src={post.image} alt={post.topic} width="100%" /> : null}
-                            <div className='singlepost-message'>
-                                <p dangerouslySetInnerHTML={{__html:post.message}} />
-                            </div>
-
-                            {post.video !== "" ? <div>Check the video url: <a href={post.video} target="_blank"  rel="noopener noreferrer">{post.video}</a> </div> : null}
-
-                            <div className='createdby'>
-                                <div>Created by: <span>{post.postername}</span></div>
-                                <div className='date'>{moment(post.createdAt).fromNow()}</div>
-                            </div>
-
-
-                            <hr />
-
-                            <div className='comment-section'>
-                                <h3><CommentSection post={post} /></h3>
-                            </div>
-                        </div>
-
-                        <NavLink to="/" className="back-nav">
-                            <div className='arrow'><BiArrowBack className="back-arrow" /><span> Back to feeds</span></div>
-                        </NavLink>
-                    </div>
-                    <div className='col-lg-1 col-md-1 col-sm12'></div>
-
-                </div>
+        <Helmet>
+            <meta charSet="UTF-8" />
+            <title>{post.topic}</title>
+            <meta property="og:title" content={post.topic} />
+            <meta name="description" content={post.topic} />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
             
+            <meta id="meta-description" name="description"property='og:description' content={post.topic}/>
+           
+        </Helmet>
+        <Navbar />
+        <div className='singlepost-container'>       
+            <div className='container'>
+            
+                    <div className='row'>
+                        <div className='col-lg-1 col-md-1 col-sm12'></div>
+                        <div className='col-lg-10 col-md-10 col-sm-12'>
+                            <div className='singlepost-content'>
+                                <div className='single-header'>
+                                    <h2><NavLink to="/" className="single-nav"> Inspired for men  </NavLink> </h2>
+                                    <FacebookShareButton url={post.topic} quote={post.topic} >
+                                        <FacebookIcon logoFillColor="white" round={true}></FacebookIcon>
+                                    </FacebookShareButton>
+
+                                    <WhatsappShareButton title={post.topic}
+                                        url={post.topic}
+                                    >
+                                        <WhatsappIcon logoFillColor="white" round={true}></WhatsappIcon>
+                                    </WhatsappShareButton>
+                                    {/* <div className='date'><span>Date:</span> {displaytodaysdate}</div> */}
+                                    {/* <div>{toString}</div> */}
+                                </div>
+                                
+                            </div>
+
+                            <div className='title-middle'>
+                                <div className='topic'>{post.topic}</div>
+                                <div className='sub-link'><Link to="/" className='Link'>Inspired For Men Forum</Link> <span> / </span><span><Link to="/" className='Link'>General</Link></span>
+                                <span> / </span> <span> <Link to="/" className='Link'>{post.category}</Link> </span> <span> / </span> <span><Link to={`/${(post.topic)}`} className='Link'>{post.topic}</Link></span>
+                                    <span className='comment'>{(post.usercomment).length === 0 || (post.usercomment).length=== 1 ? <div>({(post.usercomment).length} comment)</div> :
+                                        <div>({(post.usercomment).length} comments)</div>}   </span>
+                                </div>
+                            </div>
+                            
+                            <div className='singlepost-content'>
+                                <div className='singlepost-top'>
+                                    <span>{post.topic}</span> <span className='by'>by</span> <span className='poster'>{post.postername}</span> 
+                                    <span className='colon'> :</span>
+                                    <span className='time'> {moment(post.createdAt).format("DD.MMa")}</span>
+                                    <span className='on'> on</span> <span className='time'>{moment(post.createdAt).format("MMM.D")}</span>
+                                </div>
+                                {/* <div className='singlepost-topic'>{post.topic}</div> */}
+                                {/* <p>Category: <span>{post.category}</span></p> */}
+                                
+
+                                <div className='singlepost-other'>
+                                    {post.image !== "" ?<img src={post.image} alt={post.topic} width="100%" /> : null}
+                                    <div className='singlepost-message'>
+                                        <p dangerouslySetInnerHTML={{__html:post.message}} />
+                                    </div>
+
+                                    {post.video !== "" ? <div>Check the video url: <a href={post.video} target="_blank"  rel="noopener noreferrer">{post.video}</a> </div> : null}
+
+                                    <hr />
+
+                                    <div className='comment-section'>
+                                        <h3><CommentSection post={post} /></h3>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div className='col-lg-1 col-md-1 col-sm12'></div>
+
+                    </div>
+                
+            </div>
         </div>
     </div>
   )

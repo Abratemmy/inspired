@@ -1,12 +1,13 @@
 import * as api from "../api";
 
-import { FETCH_ALL, UPDATE, FETCH_POST, COMMENT } from "../constants/actionTypes";
+import { FETCH_ALL, UPDATE, FETCH_POST} from "../constants/actionTypes";
 
 
 
-export const getPost = (id) => async(dispatch) => {
+export const getPost = (topic) => async(dispatch) => {
     try {
-        const {data} = await api.fetchPost(id);
+        const {data} = await api.fetchPost(topic);
+        // const {data} = await api.fetchPost(topic.replace(/\s+/g, '-'));
         dispatch({type: FETCH_POST, payload: data})
     } catch (error) {
         console.log(error)

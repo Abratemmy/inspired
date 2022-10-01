@@ -1,14 +1,16 @@
 import axios from "axios";
 const API = axios.create({ baseURL: 'https://inspiredformen.herokuapp.com'});
 
+export const fetchPost = (topic) => API.get(`/posts/${topic}`);
 
-export const fetchPost = ( id) => API.get(`/posts/${id}`);
 export const fetchPosts = () =>API.get('/posts');
 
 export const likePost = (id) => API.patch(`/posts/${id}/likePost`);
 
 
 export const comment= (value, id) => API.post(`/posts/${id}/commentPost`, {value});
+
+export const fetchcomment= (id) => API.get(`/posts/${id}/commentPost`);
 
 
 export  const signIn = (values) => API.post('/user/signin', values)

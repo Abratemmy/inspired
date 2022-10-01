@@ -1,29 +1,13 @@
-import React, {useState, useEffect} from 'react';
-import {useSelector,useDispatch} from "react-redux";
+import React, {useState} from 'react';
 import {commentPost } from "../../actions/posts";
-import axios from 'axios';
-import { useParams} from 'react-router-dom';
-import "./commentsection.css"
+import "./commentsection.css";
+import moment from "moment";
+
 
 function CommentSection ({post }) {
-    console.log("comment post", post)
+    // console.log("comment post", post)
     
-    const [comments, setComments ] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const { id } = useParams();
-
-    useEffect(() =>{
-        const fetchBlogs = async () =>{
-            setLoading(true);
-            const res = await axios.get(`https://inspiredformen.herokuapp.com/posts/${id}/commentPost`);
-            setComments (res.data);
-            setLoading(false);
-            console.log("commentblog", res.data)
-        }
-        fetchBlogs()
-    }, []);
-
-
+    const [comments, setComments ] = useState(post.usercomment);
     const [comment, setComment ] = useState({
         comment: "",
         postedBy: "",
@@ -34,17 +18,41 @@ function CommentSection ({post }) {
 			[ev.target.name]: ev.target.value,
 		});
 	};
+    const [errors, setErrors] = useState({});
+    const handleError = (targets) => {
+		let errorsValue = {};
+		if (!targets.comment) errorsValue.comment = "Type your comment";
+        if (!targets.postedBy) errorsValue.postedBy = "Name is required";
+		
+		if (Object.keys(errorsValue).length > 0) setErrors({ ...errorsValue });
+		else setErrors({});
 
+		return Object.keys(errorsValue).length;
+
+	};
     // const dispatch = useDispatch();
 
     const handleClick = async(e) => {
         e.preventDefault()
-        console.log("Frontend comment", comment);
-        const newComments = await commentPost(comment, post._id);
-        setComments(newComments)
-        console.log("comment display", comments)
+        let v = handleError(comment);
+        // check if there is any eror available and handle here 
+		if (v > 0) console.log("error");
+		//submit form here if no error availble
+		else {
+            console.log("Frontend comment", comment);
+            const newComments = await commentPost(comment, post._id);
+            setComments(newComments);
+            clear()
+            console.log("comment display", comments)    
+        }
     }
-  
+    const clear = () => {
+        // setComments(" ");
+        setComment({
+            comment: "",
+            postedBy: "",
+        })
+    }
 
   return (
     <div className='comments'>
@@ -53,10 +61,13 @@ function CommentSection ({post }) {
                 <div className=''>
                 <h6>Comment section</h6>
                 <hr />
-                    {comments.map((c, i) => (
-                        <div className='display-comments' key={i}>
-                            
-                            <div className='name'>{c.postedBy}</div>
+                    {comments
+                    .map((c, i) => (
+                        <div className='display-comments' key={i}> 
+                            <div className='name-date'>
+                                <div className='name'>{c.postedBy}</div>
+                                <div className='date'>{moment(c.createdAt).format("MMM D")}</div>
+                            </div>
                             <div className='comment'>{c.comment} </div>
                         
                         </div>
@@ -66,9 +77,11 @@ function CommentSection ({post }) {
 
             <div className='col-lg-6 col-md-6 col-sm-12'>
                 <form className='comment-form'>
-                    <textarea placeholder='write a comment'className='comment-textarea' rows="4"name="comment"  required onChange={handleChange}></textarea>
-                    <input type="text"className='comment-input' placeholder="name" name="postedBy"required onChange={handleChange}/>
-                    <button disabled={!comment.comment && !comment.postedBy} onClick={handleClick} className="comment-btn">Comment</button>
+                    <textarea placeholder='write a comment'className='comment-textarea' rows="4"name="comment" value={comment.comment} required onChange={handleChange}></textarea>
+                    {errors ? <p> {errors.comment }</p>: ""}
+                    <input type="text"className='comment-input' placeholder="name" name="postedBy"value={comment.postedBy} required onChange={handleChange}/>
+                    {errors ? <p> {errors.postedBy }</p>: ""}
+                    <button onClick={handleClick} className="comment-btn">Comment</button>
                 </form>
             </div>
         </div>

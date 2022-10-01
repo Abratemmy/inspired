@@ -29,10 +29,15 @@
 
 :root{
   --blackColor: #555454;
-  --cursiveFamily:'Great Vibes', cursive;
+  --cursiveFamily:'Kaushan Script', cursive;
   --headingFamily:'Open Sans', sans-serif;
   --textFamily:'Lato', sans-serif;
   --purpleColor:#be0bce;
   --primaryColor: rgb(79, 172, 201);
   --backgroundColor: rgb(238, 239, 248);
+}
+body{
+  width: 100%;
+  height:auto!important;
+  overflow-y: scroll!important;
 }
