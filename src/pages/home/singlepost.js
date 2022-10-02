@@ -39,7 +39,7 @@ function Singlepost() {
             ]}
         /> */}
 
-        {/* <Helmet>
+        <Helmet>
             <meta charSet="UTF-8" />
             <title>{post.topic}</title>
             <meta property="og:title" content={post.topic} />
@@ -48,7 +48,7 @@ function Singlepost() {
             
             <meta id="meta-description" name="description"property='og:description' content={post.topic}/>
            
-        </Helmet> */}
+        </Helmet>
         <Navbar />
         <div className='singlepost-container'>       
             <div className='container'>
