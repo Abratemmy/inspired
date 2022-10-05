@@ -9,7 +9,7 @@ import { Link, useNavigate } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 import logo from "../../image/winner2.jpg"
 import Navbar from "../Navbar/Navbar.js"
-import Helmet from 'react-helmet'
+// import Helmet from 'react-helmet'
 
 function Home() {
 
@@ -91,14 +91,14 @@ function Home() {
                                   .map((post, i) => (
                                     <>
                                     
-                                    <Helmet>
+                                    {/* <Helmet>
                                         <meta charSet="UTF-8" />
-                                        {/* <title>{post.topic}</title> */}
+                                        <title>Inspiredformen</title>
                                         <meta property="og:title" content="IMPACTING LIFE, FULFILLING DESTINY"/>
                                         <meta name="description" content="IMPACTING LIFE, FULFILLING DESTINY" />
                                         <meta name="og:description" content= 'IMPACTING LIFE, FULFILLING DESTINY'/>
                                         <meta name="viewport" content="width=device-width, initial-scale=1" />
-                                    </Helmet>
+                                    </Helmet> */}
 
                                     {/* <Helmet
                                         title={post && post.topic ? post.topic : null }

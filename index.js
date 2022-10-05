@@ -1,19 +1,17 @@
 const path = require('path');
 const express = require('express');
-const axios = require('axios');
+const axios = require('axios')
 const fs = require("fs"); 
-
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.get('/', function(request, response) {
-    const filePath = path.resolve('./build/index.html');
+    const filePath = path.resolve(__dirname, './build', 'index.html');
     fs.readFile(filePath, 'utf8', function (err,data) {
         if (err) {
             return console.log(err);
         }
         console.log("success")
-        
         data = data.replace('__META_TITLE__', 'Inspiredformen.com');
         data = data.replace('__META_OG_TITLE__', 'IMPACTING LIFE, FULFILLING DESTINY');
         data = data.replace('__META_DESCRIPTION__', 'IMPACTING LIFE, FULFILLING DESTINY');
@@ -24,7 +22,7 @@ app.get('/', function(request, response) {
 
 
 app.get('/:topic', (request, response) => {
-    const filePath = path.resolve('./build/index.html');
+    const filePath = path.resolve(__dirname, './build', 'index.html');
     fs.readFile(filePath, 'utf8', function (err,data) {
         if (err) {
             return console.log(err);
@@ -45,7 +43,7 @@ app.get('/:topic', (request, response) => {
     })
 })
 
-app.use(express.static(path.resolve(__dirname, '..', './build')));
+app.use(express.static(path.resolve(__dirname, './build')));
 
 app.get('*', function(request, response) {
   const filePath = path.resolve(__dirname, './build', 'index.html');
