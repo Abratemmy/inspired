@@ -1,5 +1,5 @@
 import axios from "axios";
-const API = axios.create({ baseURL: 'https://inspiredformen-server.onrender.com'});
+const API = axios.create({ baseURL: 'https://inspiredformenserver.onrender.com'});
 
 export const fetchPost = (topic) => API.get(`/posts/${topic}`);
 
