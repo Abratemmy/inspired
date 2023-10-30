@@ -41,3 +41,31 @@ body{
   height:auto!important;
   overflow-y: scroll!important;
 }
+.animate-character{
+  text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #4fbbc9 0%,
+    #1058aaf3 29%,
+    #d8d6d6 67%,
+    #0099ffa2 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 4s linear infinite;
+  display: inline-block;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* another animation */

@@ -1,6 +1,6 @@
 import axios from "axios";
 const API = axios.create({ baseURL: 'https://inspiredformenserver.onrender.com'});
-
+// https://inspiredformenserver.onrender.com
 export const fetchPost = (topic) => API.get(`/posts/${topic}`);
 
 export const fetchPosts = () =>API.get('/posts');

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "http://inspiredformen.com",
+  "keywords": [],
   "dependencies": {
     "@babel/preset-env": "^7.19.3",
     "@babel/preset-react": "^7.18.6",
@@ -28,6 +29,7 @@
     "redux-thunk": "^2.4.1",
     "web-vitals": "^2.1.4"
   },
+
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
