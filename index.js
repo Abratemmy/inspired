@@ -34,7 +34,8 @@ app.get('/:topic', (request, response) => {
         let apiUrl = `https://inspiredformenserver.onrender.com/posts${request.url}?seokey=topic, category`
         axios.get(apiUrl).then((resdata) => {
             console.log("resdata", resdata?.data)
-            const { topic, category } = resdata?.data
+            // const { topic, category } = resdata?.data
+            const topic = resdata?.data
 
             // let kwrds = JSON.parse(topic)
             data = data.replace('__META_TITLE__', topic);
